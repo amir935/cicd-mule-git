@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="c52da02d-7163-47c1-a9ff-8056a1707ebf" >
+		<http:listener-connection host="0.0.0.0" port="${http.port}" />
+	</http:listener-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="ea437d73-d01b-4b7b-b711-a90bc048450c" file="dev.yaml" />
+	<flow name="git-mule-actionFlow" doc:id="049cf684-acb2-4ab0-ab3b-7b2c4e197c4a" >
+		<http:listener doc:name="Listener" doc:id="f9f5742e-c63e-4590-b8d3-43065449d56a" config-ref="HTTP_Listener_config" path="path"/>
+		<set-payload value='#["Hello World"]' doc:name="Set Payload" doc:id="df5c1721-4b4d-47b6-9784-5a009ff6c15d" />
+	</flow>
+</mule>
